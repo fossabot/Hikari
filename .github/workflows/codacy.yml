@@ -6,7 +6,7 @@
 # For more information on Codacy Analysis CLI in general, see
 # https://github.com/codacy/codacy-analysis-cli.
 
-name: Codacy Security Scan
+name: Codacy
 
 on:
   push:
@@ -44,3 +44,9 @@ jobs:
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: results.sarif
+
+      - name: Run codacy-coverage-reporter
+        uses: codacy/codacy-coverage-reporter-action@master
+        with:
+          project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
